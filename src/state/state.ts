@@ -1,4 +1,4 @@
-export interface Bohne {
+export type Bohne = {
   id: string;
   art: string;
   vkp: number;
@@ -6,7 +6,7 @@ export interface Bohne {
   ekp: number;
   rabatt: number;
   vkpRabatt: number;
-}
+};
 
 type BohnenState = {
   bohnen: Bohne[];

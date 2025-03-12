@@ -7,12 +7,12 @@ export enum BohnenActionTypes {
 
 type BohnenAddAction = {
   type: BohnenActionTypes.ADD;
-  payload: Partial<Bohne>;
+  payload: Bohne;
 };
 
 type BohnenUpdateAction = {
   type: BohnenActionTypes.UPDATE;
-  payload: Partial<Bohne>;
+  payload: Bohne;
 };
 
 type BohnenAction = BohnenUpdateAction | BohnenAddAction;

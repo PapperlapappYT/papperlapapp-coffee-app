@@ -1,4 +1,4 @@
-import {Bohne, BohnenState} from "@/state/state";
+import { Bohne, BohnenState } from "@/state/state";
 import { BohnenAction, BohnenActionTypes } from "@/state/actions";
 
 export const bohnenReducer = (
@@ -13,11 +13,11 @@ export const bohnenReducer = (
     const bohne = action.payload;
     const updatedBohnen: Bohne[] = bohnen.map((b) => {
       if (b.id === bohne.id) {
-        const rabatt = parseFloat(bohne.rabatt || 0.0);
-        const vkp = parseFloat(bohne.vkp).toFixed(2);
-        const vkpRabatt = (vkp - vkp * (rabatt / 100)).toFixed(2);
-        const ekp = parseFloat(bohne.ekp).toFixed(2);
-        const marge = ((vkpRabatt / ekp - 1) * 100).toFixed(2);
+        const rabatt = bohne.rabatt || 0.0;
+        const vkp = roundNumber(bohne.vkp);
+        const vkpRabatt = roundNumber(vkp - vkp * (rabatt / 100));
+        const ekp = roundNumber(bohne.ekp);
+        const marge = roundNumber((vkpRabatt / ekp - 1) * 100);
         return {
           id: bohne.id,
           art: bohne.art,
@@ -36,3 +36,6 @@ export const bohnenReducer = (
     return bohnenState;
   }
 };
+
+export const roundNumber = (number: number) =>
+  Math.round((number + Number.EPSILON) * 100) / 100;
