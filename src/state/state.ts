@@ -6,6 +6,7 @@ export type Bohne = {
   ekp: number;
   rabatt: number;
   vkpRabatt: number;
+  predictedVKP: number;
 };
 
 type BohnenState = {
@@ -17,6 +18,7 @@ export const initialBohnen: Bohne[] = [
     id: "1",
     art: "Äthiopien",
     vkp: 12.0,
+    predictedVKP: 12.0,
     marge: 20.0,
     ekp: 10.0,
     rabatt: 0.0,
@@ -26,6 +28,7 @@ export const initialBohnen: Bohne[] = [
     id: "2",
     art: "Burundi",
     vkp: 13.0,
+    predictedVKP: 13.0,
     marge: 20.0,
     ekp: 11.0,
     rabatt: 0.0,

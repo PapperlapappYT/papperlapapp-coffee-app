@@ -16,6 +16,7 @@ export const Bohnen = () => {
             <th>Marge in Prozent</th>
             <th>Rabatt</th>
             <th>Preis im Laden in Euro ohne Rabatt</th>
+            <th>AI berechneter Preis im Laden in Euro</th>
             <th>Preis im Laden</th>
           </tr>
         </thead>
@@ -105,6 +106,16 @@ export const Bohnen = () => {
                       })
                     }
                     value={bohne.vkp || "0.0"}
+                  />
+                </td>
+                <td>
+                  <input
+                      type="number"
+                      disabled={true}
+                      id="precictedVKP"
+                      data-testid="precictedVKP"
+                      className="border-2 border-slate-400"
+                      value={bohne.predictedVKP || "0.0"}
                   />
                 </td>
                 <td>

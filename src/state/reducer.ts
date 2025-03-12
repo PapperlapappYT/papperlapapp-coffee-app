@@ -1,5 +1,6 @@
 import { Bohne, BohnenState } from "@/state/state";
 import { BohnenAction, BohnenActionTypes } from "@/state/actions";
+import { calculate } from "@/state/calculate";
 
 export const bohnenReducer = (
   bohnenState: BohnenState,
@@ -13,20 +14,7 @@ export const bohnenReducer = (
     const bohne = action.payload;
     const updatedBohnen: Bohne[] = bohnen.map((b) => {
       if (b.id === bohne.id) {
-        const rabatt = bohne.rabatt || 0.0;
-        const vkp = roundNumber(bohne.vkp);
-        const vkpRabatt = roundNumber(vkp - vkp * (rabatt / 100));
-        const ekp = roundNumber(bohne.ekp);
-        const marge = roundNumber((vkpRabatt / ekp - 1) * 100);
-        return {
-          id: bohne.id,
-          art: bohne.art,
-          vkp,
-          vkpRabatt,
-          marge,
-          ekp,
-          rabatt,
-        };
+        return calculate(b);
       } else {
         return b;
       }
