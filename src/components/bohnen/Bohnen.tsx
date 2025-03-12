@@ -45,7 +45,10 @@ export const Bohnen = () => {
                     onChange={(event) =>
                       dispatch({
                         type: BohnenActionTypes.UPDATE,
-                        payload: { ...bohne, ekp: event.target.value },
+                        payload: {
+                          ...bohne,
+                          ekp: parseFloat(event.target.value),
+                        },
                       })
                     }
                     value={bohne.ekp || ""}
@@ -60,7 +63,10 @@ export const Bohnen = () => {
                     onChange={(event) =>
                       dispatch({
                         type: BohnenActionTypes.UPDATE,
-                        payload: { ...bohne, marge: event.target.value },
+                        payload: {
+                          ...bohne,
+                          marge: parseFloat(event.target.value),
+                        },
                       })
                     }
                     value={bohne.marge || ""}
@@ -74,7 +80,10 @@ export const Bohnen = () => {
                     onChange={(event) =>
                       dispatch({
                         type: BohnenActionTypes.UPDATE,
-                        payload: { ...bohne, rabatt: event.target.value },
+                        payload: {
+                          ...bohne,
+                          rabatt: parseFloat(event.target.value),
+                        },
                       })
                     }
                     value={bohne.rabatt || "0.0"}
@@ -89,7 +98,10 @@ export const Bohnen = () => {
                     onChange={(event) =>
                       dispatch({
                         type: BohnenActionTypes.UPDATE,
-                        payload: { ...bohne, vkp: event.target.value },
+                        payload: {
+                          ...bohne,
+                          vkp: parseFloat(event.target.value),
+                        },
                       })
                     }
                     value={bohne.vkp || "0.0"}
@@ -105,7 +117,10 @@ export const Bohnen = () => {
                     onChange={(event) =>
                       dispatch({
                         type: BohnenActionTypes.UPDATE,
-                        payload: { ...bohne, vkpRabatt: event.target.value },
+                        payload: {
+                          ...bohne,
+                          vkpRabatt: parseFloat(event.target.value),
+                        },
                       })
                     }
                     value={bohne.vkpRabatt || "0.0"}
