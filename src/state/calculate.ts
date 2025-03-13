@@ -1,6 +1,6 @@
 import { roundNumber } from "@/state/reducer";
 import { Bohne } from "@/state/state";
-import { predictPrice } from "@papperlapappyt/papperlapapp-coffee-prediction/dist/index.js";
+import { predictPrice } from "@papperlapappyt/papperlapapp-coffee-prediction";
 
 export const calculate = (newBohne: Bohne) => {
   const rabatt = newBohne.rabatt || 0.0;
