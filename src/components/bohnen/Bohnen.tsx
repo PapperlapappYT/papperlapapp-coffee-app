@@ -2,22 +2,25 @@
 import React, { useContext } from "react";
 import { BohnenContext, BohnenDispatchContext } from "@/app/BohnenProvider";
 import { BohnenActionTypes } from "@/state/actions";
+import { useTranslations } from "next-intl";
 
 export const Bohnen = () => {
   const { bohnen } = useContext(BohnenContext);
+  const t = useTranslations("beanOverview");
+
   const dispatch = useContext(BohnenDispatchContext);
   return (
     <div className="tableContainer">
       <table className="border-separate border-spacing-2">
         <thead className="text-1xl text-gray-700 font-bold mb-5">
           <tr>
-            <th>Bohnenart</th>
-            <th>Preis beim Händler in Euro</th>
-            <th>Marge in Prozent</th>
-            <th>Rabatt</th>
-            <th>Preis im Laden in Euro ohne Rabatt</th>
-            <th>AI berechneter Preis im Laden in Euro</th>
-            <th>Preis im Laden</th>
+            <th>{t("beanType")}</th>
+            <th>{t("ekp")}</th>
+            <th>{t("marge")}</th>
+            <th>{t("discount")}</th>
+            <th>{t("vkpWithoutDiscount")}</th>
+            <th>{t("aiPredictedSalesPrices")}</th>
+            <th>{t("salesPrices")}</th>
           </tr>
         </thead>
         <tbody>

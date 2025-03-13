@@ -1,0 +1,11 @@
+{
+  "beanOverview": {
+    "beanType": "Bohnenart",
+    "ekp": "Preis beim Händler in Euro",
+    "marge": "Marge in Prozent",
+    "discount": "Rabatt",
+    "vkpWithoutDiscount": "Preis im Laden in Euro ohne Rabatt",
+    "aiPredictedSalesPrices": "AI berechneter Preis im Laden in Euro",
+    "salesPrices": "Preis im Laden"
+  }
+}

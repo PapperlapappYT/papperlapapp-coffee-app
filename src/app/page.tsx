@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Bohnen } from "@/components/bohnen/Bohnen.tsx";
+import { Bohnen } from "@/components/bohnen/Bohnen";
 import { BohnenProvider } from "@/app/BohnenProvider";
 
 export default function Home() {
