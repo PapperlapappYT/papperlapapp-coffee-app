@@ -19,3 +19,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Use prediction package
 To be able to use the papperlapapp prediction package, you have to create a Github Token with at least packages read scope.
 export this to `PAPPERLAPAPP_NPM_TOKEN` and `npm i`
+`export PAPPERLAPAPP_NPM_TOKEN=<YOUR_TOKEn>>`
