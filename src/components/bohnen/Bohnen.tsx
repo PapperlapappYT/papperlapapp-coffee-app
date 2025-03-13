@@ -110,12 +110,12 @@ export const Bohnen = () => {
                 </td>
                 <td>
                   <input
-                      type="number"
-                      disabled={true}
-                      id="precictedVKP"
-                      data-testid="precictedVKP"
-                      className="border-2 border-slate-400"
-                      value={bohne.predictedVKP || "0.0"}
+                    type="number"
+                    disabled={true}
+                    id="precictedVKP"
+                    data-testid="precictedVKP"
+                    className="border-2 border-slate-400 disabled:bg-slate-200"
+                    value={bohne.predictedVKP || "0.0"}
                   />
                 </td>
                 <td>

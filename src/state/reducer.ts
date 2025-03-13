@@ -14,7 +14,7 @@ export const bohnenReducer = (
     const bohne = action.payload;
     const updatedBohnen: Bohne[] = bohnen.map((b) => {
       if (b.id === bohne.id) {
-        return calculate(b);
+        return calculate(bohne);
       } else {
         return b;
       }
