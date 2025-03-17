@@ -3,6 +3,9 @@ import { calculate } from "@/state/calculate";
 import { getMockBohne } from "@/test/mockData";
 import * as predictPriceModule from "@papperlapappyt/papperlapapp-coffee-prediction";
 
+// https://vitest.dev/api/vi.html#vi-spyon
+vitest.mock("@papperlapappyt/papperlapapp-coffee-prediction", {spy: true});
+
 describe("tests mit 'as Mock' pattern", () => {
   afterEach(() => {
     vitest.resetAllMocks();
