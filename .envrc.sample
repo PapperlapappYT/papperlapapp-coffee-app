@@ -1,1 +1,1 @@
-export NPMRC_GITHUB_TOKEN="your_github_token_here"
+export PAPPERLAPAPP_NPM_TOKEN=your_github_token_here
