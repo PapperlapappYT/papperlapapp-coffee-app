@@ -1,6 +1,6 @@
 import { Bohne } from "@/state/state";
 
-export const getMockBohne = (): Bohne => ({
+export const getMockBohne = (overrides?: Partial<Bohne>): Bohne => ({
   id: "1",
   ekp: 10,
   marge: 10,
@@ -9,4 +9,5 @@ export const getMockBohne = (): Bohne => ({
   vkp: 20,
   art: "test",
   vkpRabatt: 0,
+  ...overrides,
 });

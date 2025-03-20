@@ -3,9 +3,23 @@ import { calculate } from "@/state/calculate";
 import { getMockBohne } from "@/test/mockData";
 import * as predictPriceModule from "@papperlapappyt/papperlapapp-coffee-prediction";
 
-// vitest.mock hier nur, weil predictPrice als read-only property aus dem
-// prediction module exportiert wird.
-// Ansonsten bräuchten wir bei diesem Pattern kein vitest.mock.
+// Verschiedene Verhaltensweisen mocken
+// Variante: importModule Pattern
+// - Nutzt vitest.spyOn um die Methode zu mocken
+// - Dafür werden alle exports der Datei mit * in ein Objekt importiert,
+//   um dieses Objekt mit spyOn nutzen zu können
+
+// Vorteil:
+// - Ich bin unabhängig von vitest.restoreAllMocks
+// Nachteil:
+// - Etwas mehr Boilerplate als Variante beim "as Mock" Pattern
+// - vitest.spyOn kann keine read-only properties mocken
+// => Das ist hier im konkreten Beispiel der Fall. Als workaround wird das
+//    Pattern mit vitest.mock kombiniert.
+//    vitest.mock sorgt hier dafür, dass die readOnly property predictPrice
+//    durch einen Mock ersetzt wird der dann nicht mehr readOnly ist.
+// Ansonsten bräuchten wir bei diesem Pattern kein vitest.mock!
+
 vitest.mock("@papperlapappyt/papperlapapp-coffee-prediction");
 
 describe("tests mit 'as Mock' pattern", () => {

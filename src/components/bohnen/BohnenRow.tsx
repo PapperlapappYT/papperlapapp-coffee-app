@@ -16,13 +16,15 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         <input
           type="text"
           data-testid="art"
+          aria-label="Bohnenart"
           className="border-2 border-slate-400"
-          onChange={(event) =>
+          onChange={(event) => {
+            console.log("event.target.value", event.target.value);
             dispatch({
               type: BohnenActionTypes.UPDATE,
               payload: { ...bohne, art: event.target.value },
-            })
-          }
+            });
+          }}
           value={bohne.art || ""}
         />
       </td>
