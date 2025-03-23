@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "tsc --noemit & next lint",
+    "test": "vitest",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@papperlapappyt/papperlapapp-coffee-prediction": "0.0.3",
@@ -18,13 +20,21 @@
   "devDependencies": {
     "@eslint/eslintrc": "3.3.0",
     "@tailwindcss/postcss": "4.0.14",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "14.6.1",
     "@types/node": "20",
-    "@types/react": "19.0.10",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "9.22.0",
     "eslint-config-next": "15.2.1",
+    "jsdom": "26.0.0",
+    "jsdom-testing-mocks": "1.13.1",
     "prettier": "3.5.3",
     "tailwindcss": "4.0.14",
-    "typescript": "5.8.2"
+    "typescript": "5.8.2",
+    "vitest": "^3.0.8"
   }
 }

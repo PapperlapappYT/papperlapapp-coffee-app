@@ -1,4 +1,4 @@
-import {Bohne} from "@/state/state";
+import { Bohne } from "@/state/state";
 
 export enum BohnenActionTypes {
   UPDATE = "UPDATE",
@@ -17,8 +17,4 @@ type BohnenUpdateAction = {
 
 type BohnenAction = BohnenUpdateAction | BohnenAddAction;
 
-export type {
-  BohnenAction,
-  BohnenAddAction,
-  BohnenUpdateAction,
-};
+export type { BohnenAction, BohnenAddAction, BohnenUpdateAction };
