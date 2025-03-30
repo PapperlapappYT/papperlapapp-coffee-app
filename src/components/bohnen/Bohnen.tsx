@@ -9,17 +9,23 @@ export const Bohnen = () => {
   const t = useTranslations("beanOverview");
 
   return (
-    <div className="tableContainer">
-      <table className="border-separate border-spacing-2">
+    <div>
+      <table className="border-separate border-spacing-2 table-fixed">
         <thead className="text-1xl text-gray-700 font-bold mb-5">
           <tr>
-            <th>{t("beanType")}</th>
-            <th>{t("ekp")}</th>
-            <th>{t("marge")}</th>
-            <th>{t("discount")}</th>
-            <th>{t("vkpWithoutDiscount")}</th>
-            <th>{t("aiPredictedSalesPrices")}</th>
-            <th>{t("salesPrices")}</th>
+            <th className="w-3 text-left align-text-top">{t("beanType")}</th>
+            <th className="text-right pr-1 align-text-top">{t("ekp")}</th>
+            <th className="text-right pr-1 align-text-top">{t("marge")}</th>
+            <th className="text-right pr-1 align-text-top">{t("discount")}</th>
+            <th className="text-right pr-1 align-text-top">
+              {t("vkpWithoutDiscount")}
+            </th>
+            <th className="text-right pr-1 align-text-top">
+              {t("aiPredictedSalesPrices")}
+            </th>
+            <th className="text-right pr-1 align-text-top">
+              {t("salesPrices")}
+            </th>
           </tr>
         </thead>
         <tbody>
