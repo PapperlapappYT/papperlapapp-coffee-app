@@ -10,6 +10,11 @@ type BohnenRowProps = {
 const BohnenRow = ({ bohne }: BohnenRowProps) => {
   const dispatch = useContext(BohnenDispatchContext);
 
+  const inputClasses =
+    "w-full border-1 border-slate-400 p-1 outline-1 outline-transparent focus:border-cyan-600 focus:outline-1 focus:outline-cyan-600 disabled:bg-slate-200";
+
+  const numberInputClasses = `${inputClasses} text-right font-mono`;
+
   return (
     <tr key={bohne.id}>
       <td>
@@ -17,7 +22,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           type="text"
           data-testid="art"
           aria-label="Bohnenart"
-          className="border-2 border-slate-400"
+          className={inputClasses}
           onChange={(event) => {
             console.log("event.target.value", event.target.value);
             dispatch({
@@ -32,7 +37,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         <input
           type="number"
           data-testid="ekp"
-          className="border-2 border-slate-400"
+          className={numberInputClasses}
           onChange={(event) =>
             dispatch({
               type: BohnenActionTypes.UPDATE,
@@ -49,7 +54,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         <input
           type="number"
           data-testid="marge"
-          className="border-2 border-slate-400 disabled:bg-slate-200"
+          className={numberInputClasses}
           disabled={true}
           onChange={(event) =>
             dispatch({
@@ -67,7 +72,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         <input
           type="number"
           data-testid="rabatt"
-          className="border-2 border-slate-400"
+          className={numberInputClasses}
           onChange={(event) =>
             dispatch({
               type: BohnenActionTypes.UPDATE,
@@ -85,7 +90,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           type="number"
           id="vkp"
           data-testid="vkp"
-          className="border-2 border-slate-400"
+          className={numberInputClasses}
           onChange={(event) =>
             dispatch({
               type: BohnenActionTypes.UPDATE,
@@ -104,7 +109,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           disabled={true}
           id="precictedVKP"
           data-testid="precictedVKP"
-          className="border-2 border-slate-400 disabled:bg-slate-200"
+          className={numberInputClasses}
           value={bohne.predictedVKP || "0.0"}
         />
       </td>
@@ -114,7 +119,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           id="vkpRabatt"
           data-testid="vkpRabatt"
           disabled={true}
-          className="border-2 border-slate-400 disabled:bg-slate-200"
+          className={numberInputClasses}
           onChange={(event) =>
             dispatch({
               type: BohnenActionTypes.UPDATE,
