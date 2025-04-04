@@ -1,13 +1,14 @@
-import { describe, expect, it, MockInstance, vitest } from "vitest";
+import { describe, expect, it, vitest } from "vitest";
 import { calculate } from "@/state/calculate";
 import { getMockBohne } from "@/test/mockData";
 import { predictPrice } from "@papperlapappyt/papperlapapp-coffee-prediction";
 
 // Verschiedene Verhaltensweisen mocken
-// Variante: asMock Pattern
+// Variante: vitest.mocked Pattern
 // - Nutzt autoMocking mit vitest.mock
 // - import der nun gemockten Methode unter dem Wissen, dass wir nun eine als Spy gewrappte
 //   Methode haben, deren Verhalten wir beliebig steuern können
+// - Nutzt vitest.mocked um den Typ der Methode zu erhalten
 
 // Vorteil:
 // - Einfach zu nutzen
@@ -19,7 +20,7 @@ vitest.mock("@papperlapappyt/papperlapapp-coffee-prediction", () => ({
   predictPrice: vitest.fn(),
 }));
 
-const predictPriceMock = predictPrice as unknown as MockInstance;
+const predictPriceMock = vitest.mocked(predictPrice);
 
 describe("tests mit 'as Mock' pattern", () => {
   describe("calculate", () => {
