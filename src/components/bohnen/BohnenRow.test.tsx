@@ -2,7 +2,7 @@ import React from "react";
 import { describe, expect, it, vitest } from "vitest";
 import BohnenRow from "@/components/bohnen/BohnenRow";
 import { getMockBohne } from "@/test/mockData";
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { render } from "@/test/userEvent";
 
 const dispatchMock = vitest.hoisted(() => vitest.fn());
@@ -13,7 +13,6 @@ vitest.mock("react", async (importOriginal) => ({
   ...(await importOriginal()),
   useContext: () => dispatchMock,
 }));
-
 describe("BohnenRow", () => {
   it("should render an input field to change the Bohnenart", () => {
     const mockBohne = getMockBohne();
@@ -40,11 +39,61 @@ describe("BohnenRow", () => {
     const input = screen.getByLabelText("Bohnenart");
 
     await user.clear(input);
-    await user.type(input, "test");
 
+    await user.type(input, "test");
     expect(dispatchMock).toHaveBeenCalledWith({
       type: "UPDATE",
       payload: { ...mockBohne, art: "" },
+    });
+  });
+
+  it.skip("should dispatch an UPDATE event if the user updates the EKP fake timers", async () => {
+    vitest.useFakeTimers();
+
+    const mockBohne = getMockBohne();
+    render(
+      <table>
+        <tbody>
+          <BohnenRow bohne={mockBohne} />
+        </tbody>
+      </table>,
+    );
+    const input = screen.getByLabelText("EKP");
+
+    fireEvent.change(input, {
+      target: {
+        value: "12",
+      },
+    });
+    vitest.advanceTimersByTime(500);
+
+    expect(dispatchMock).toHaveBeenCalledWith({
+      type: "UPDATE",
+      payload: { ...mockBohne, ekp: 12 },
+    });
+    vitest.useRealTimers();
+  });
+
+  it("should dispatch an UPDATE event if the user updates the EKP real timers", async () => {
+    const mockBohne = getMockBohne();
+    render(
+      <table>
+        <tbody>
+          <BohnenRow bohne={mockBohne} />
+        </tbody>
+      </table>,
+    );
+    const input = screen.getByLabelText("EKP");
+
+    fireEvent.change(input, {
+      target: {
+        value: "12",
+      },
+    });
+
+    expect(dispatchMock).toHaveBeenCalledWith({
+      type: "UPDATE",
+      payload: { ...mockBohne, ekp: 12 },
     });
   });
 });
