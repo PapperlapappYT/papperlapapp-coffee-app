@@ -17,7 +17,6 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         clearTimeout(debounceTimeout.current);
       }
       debounceTimeout.current = setTimeout(() => {
-        console.log("da isser");
         dispatch(action);
       }, 1000);
     },
@@ -28,7 +27,6 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
     "w-full border-1 border-slate-400 p-1 outline-1 outline-transparent focus:border-cyan-600 focus:outline-1 focus:outline-cyan-600 disabled:bg-slate-200";
 
   const numberInputClasses = `${inputClasses} text-right font-mono`;
-
   return (
     <tr key={bohne.id}>
       <td>
@@ -53,7 +51,6 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           aria-label="EKP"
           className={numberInputClasses}
           onChange={(event) => {
-            console.log("Changedichange", event.target.value);
             debouncedDispatch({
               type: BohnenActionTypes.UPDATE,
               payload: {
@@ -69,17 +66,9 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
         <input
           type="number"
           data-testid="marge"
+          aria-label="MARGE"
           className={numberInputClasses}
           disabled={true}
-          onChange={(event) =>
-            debouncedDispatch({
-              type: BohnenActionTypes.UPDATE,
-              payload: {
-                ...bohne,
-                marge: parseFloat(event.target.value),
-              },
-            })
-          }
           value={bohne.marge || ""}
         />
       </td>
@@ -105,6 +94,7 @@ const BohnenRow = ({ bohne }: BohnenRowProps) => {
           type="number"
           id="vkp"
           data-testid="vkp"
+          aria-label="VKP"
           className={numberInputClasses}
           onChange={(event) =>
             debouncedDispatch({

@@ -47,7 +47,7 @@ describe("BohnenRow", () => {
     });
   });
 
-  it.skip("should dispatch an UPDATE event if the user updates the EKP fake timers", async () => {
+  it("should dispatch an UPDATE event if the user updates the EKP fake timers", async () => {
     vitest.useFakeTimers();
 
     const mockBohne = getMockBohne();
@@ -62,14 +62,13 @@ describe("BohnenRow", () => {
 
     fireEvent.change(input, {
       target: {
-        value: "12",
+        value: "15",
       },
     });
-    vitest.advanceTimersByTime(500);
-
+    vitest.advanceTimersByTime(1000);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: "UPDATE",
-      payload: { ...mockBohne, ekp: 12 },
+      payload: { ...mockBohne, ekp: 15 },
     });
     vitest.useRealTimers();
   });
@@ -87,13 +86,15 @@ describe("BohnenRow", () => {
 
     fireEvent.change(input, {
       target: {
-        value: "12",
+        value: "15",
       },
     });
 
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     expect(dispatchMock).toHaveBeenCalledWith({
       type: "UPDATE",
-      payload: { ...mockBohne, ekp: 12 },
+      payload: { ...mockBohne, ekp: 15 },
     });
   });
 });
