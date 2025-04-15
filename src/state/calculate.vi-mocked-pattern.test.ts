@@ -17,7 +17,7 @@ import { predictPrice } from "@papperlapappyt/papperlapapp-coffee-prediction";
 // => ein vitest.restoreAllMocks löscht den Spy und wir können die Methode nicht mehr steuern
 
 vitest.mock("@papperlapappyt/papperlapapp-coffee-prediction", () => ({
-  predictPrice: vitest.fn(),
+  predictPrice: vitest.fn(() => 45),
 }));
 
 const predictPriceMock = vitest.mocked(predictPrice);

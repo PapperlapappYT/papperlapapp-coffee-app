@@ -24,7 +24,7 @@ vitest.mock("@papperlapappyt/papperlapapp-coffee-prediction");
 
 describe("tests mit 'as Mock' pattern", () => {
   afterEach(() => {
-    vitest.resetAllMocks();
+    vitest.restoreAllMocks();
   });
 
   describe("calculate", () => {
