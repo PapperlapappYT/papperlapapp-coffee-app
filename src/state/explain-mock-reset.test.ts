@@ -15,9 +15,12 @@ describe("reset and restore mocks", () => {
 
     expect(calculator.calculate()).toEqual(43);
     expect(calculateMock).toHaveBeenCalledTimes(1);
+
     calculateMock.mockClear();
+
     expect(calculateMock).toHaveBeenCalledTimes(0);
     expect(calculator.calculate()).toEqual(43);
+    expect(vitest.isMockFunction(calculator.calculate)).toEqual(true);
   });
 
   it("explain mockReset (resetAllMocks)", () => {
@@ -27,7 +30,9 @@ describe("reset and restore mocks", () => {
 
     expect(calculator.calculate()).toEqual(43);
     expect(calculateMock).toHaveBeenCalledTimes(1);
+
     calculateMock.mockReset();
+
     expect(calculateMock).toHaveBeenCalledTimes(0);
     expect(calculator.calculate()).toEqual(42);
     expect(vitest.isMockFunction(calculator.calculate)).toEqual(true);
@@ -43,6 +48,7 @@ describe("reset and restore mocks", () => {
 
     calculateMock.mockRestore();
 
+    expect(calculateMock).toHaveBeenCalledTimes(0);
     expect(calculator.calculate()).toEqual(42);
     expect(vitest.isMockFunction(calculator.calculate)).toEqual(false);
   });
