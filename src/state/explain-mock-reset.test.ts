@@ -52,4 +52,21 @@ describe("reset and restore mocks", () => {
     expect(calculator.calculate()).toEqual(42);
     expect(vitest.isMockFunction(calculator.calculate)).toEqual(false);
   });
+
+  it("does mockReset behave like a stack? Somehow! Yes!", () => {
+    const preMock = vitest.spyOn(calculator, "calculate").mockReturnValue(43);
+    const calculateMock = vitest
+      .spyOn(calculator, "calculate")
+      .mockReturnValue(45);
+
+    expect(calculator.calculate()).toEqual(45);
+
+    calculateMock.mockReset();
+
+    expect(calculator.calculate()).toEqual(43);
+
+    preMock.mockReset();
+
+    expect(calculator.calculate()).toEqual(42);
+  });
 });
